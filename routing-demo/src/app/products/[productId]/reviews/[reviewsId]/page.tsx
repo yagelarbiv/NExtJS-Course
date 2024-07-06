@@ -1,4 +1,10 @@
+"use client";
 import { notFound } from "next/navigation";
+
+function getRandomInt(count: number){
+  return Math.floor(Math.random() * count);
+}
+
 export default function ReviewDetails({ params }:
   { 
     params: { 
@@ -6,8 +12,14 @@ export default function ReviewDetails({ params }:
       reviewsId: number
     };
   }) {
+    const random = getRandomInt(2);
+    if(random === 1){
+      throw new Error("error Loading Review Details");
+    };
+
     if (params.reviewsId > 1000) {
       notFound();
     };
+
   return <h1>Review { params.reviewsId } For Product { params.productId }</h1>;
 }
