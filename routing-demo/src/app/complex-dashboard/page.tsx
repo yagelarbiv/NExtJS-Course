@@ -1,5 +1,3 @@
-export default function ComplexDashboardPage(){
-  return (
-    <div>Complex Dashboard</div>
-  )
+export default function ComplexDashboardPage() {
+  return <div>Complex Dashboard</div>;
 }

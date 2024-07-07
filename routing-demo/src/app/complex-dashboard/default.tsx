@@ -1,3 +1,4 @@
+import ComplexDashboardPage from './page';
 export default function DefaultComplexDashboardPage() {
-  return <div>Complex Dashboard</div>;
+  return <ComplexDashboardPage />
 }
