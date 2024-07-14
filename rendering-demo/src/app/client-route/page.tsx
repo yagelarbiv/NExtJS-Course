@@ -1,10 +1,13 @@
-"use client";
+"use client"
+import { useTheme } from "@/components/theme-provider";
+
+
 
 export default function ClientRoutePage() {
-  console.log("Client Route rendered");
+  const theme = useTheme();
   return (
-    <div>
-      page
-    </div>
+    <h1 style={{ color: theme.colors.primary }}>
+      Client route
+    </h1>
   );
 };
