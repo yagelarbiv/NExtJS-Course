@@ -9,6 +9,7 @@ type User = {
 };
 
 export default async function UsersPage() {
+  await new Promise((resolve) => setTimeout(resolve, 2000));
   const { data } = await axios.get(
     "https://jsonplaceholder.typicode.com/users"
   );
