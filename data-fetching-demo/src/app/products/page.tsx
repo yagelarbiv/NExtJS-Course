@@ -1,5 +1,5 @@
 import axios from "axios";
-import { cookies } from "next/headers";
+// import { cookies } from "next/headers";
 
 type Product = {
   id: number,
@@ -12,11 +12,11 @@ export default async function ProductsPage(){
   const res = await axios.get("http://localhost:3001/products");
   const products: Product[] = res.data;
 
-  const cookieStore = cookies();
-  cookieStore.get("theme");
+  // const cookieStore = cookies();
+  // cookieStore.get("theme");
 
-  const productsResponse = await axios.get("http://localhost:3001/products/2");
-  const detail: Product = productsResponse.data;
+  // const productsResponse = await axios.get("http://localhost:3001/products/2");
+  // const detail: Product = productsResponse.data;
 
   return(
     <ul className="space-y-4 p-4">
@@ -28,7 +28,7 @@ export default async function ProductsPage(){
         <h2 className="text-xl font-semibold">{product.title}</h2>
         <p>{product.description}</p>
         <p className="text-lg font-medium">${product.price}</p>
-        <p>{detail.title}</p>
+        {/* <p>{detail.title}</p> */}
       </li>
     ))}
   </ul>
