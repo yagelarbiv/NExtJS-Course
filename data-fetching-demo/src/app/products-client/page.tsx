@@ -1,6 +1,8 @@
 "use client";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Loading from "./loading";
+import ErrorPage from "./error";
 
 type Product = {
   id: number;
@@ -37,27 +39,29 @@ const ProductsPage = () => {
     fetchProducts();
   }, []);
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p>Error: {error}</p>;
-  }
-
   return (
-    <ul className="space-y-4 p-4">
-      {products.map((product: Product) => (
-        <li
-          key={product.id}
-          className="p-4 bg-white shadow-md rounded-lg text-gray-700"
-        >
-          <h2 className="text-xl font-semibold">{product.title}</h2>
-          <p>{product.description}</p>
-          <p className="text-lg font-medium">${product.price}</p>
-        </li>
-      ))}
-    </ul>
+    <>
+      {loading ? (
+        <Loading />
+      ) : error ? (
+        <ErrorPage error={error} />
+      ) : products && products.length >= 0 ? (
+        <ul className="space-y-4 p-4">
+          {products.map((product: Product) => (
+            <li
+              key={product.id}
+              className="p-4 bg-white shadow-md rounded-lg text-gray-700"
+            >
+              <h2 className="text-xl font-semibold">{product.title}</h2>
+              <p>{product.description}</p>
+              <p className="text-lg font-medium">${product.price}</p>
+            </li>
+          ))}
+        </ul>
+      ): (
+        <p>No products found</p>
+      )}
+    </>
   );
 };
 
